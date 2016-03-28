@@ -30,7 +30,6 @@ public interface List<T> extends Iterable<T> {
     //return number of meaningful elements in list
     public int size(); 
 
-    //return an Iterator over the elements in list
-    Iterator<T> iterator();
+    //return an Iterator over the elements in li
 
 }//end interface List
