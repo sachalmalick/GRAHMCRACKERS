@@ -7,40 +7,42 @@ import java.util.Iterator;
 
 public class LList<T> implements List<T> { //your List.java must be in same dir
 	private class MyIterator implements Iterator<T>{
-		private DLLNode<T> _curr; // dummy node
-		public MyIterator(){ 
-			_curr = _head;
+	    private DLLNode<T> _curr; // dummy node
+	    public MyIterator(){ 
+		_curr = _head;
+	    }
+	    public boolean hasNext(){
+		if (_curr.getNext() != null) {
+		    return true;
 		}
-		public boolean hasNext(){
-			if (_curr.getNext() != null) {
-				return true;
-			}
-			else {
-				return false;
-			}
+		else {
+		    return false;
 		}
-		public T next(){
-			DLLNode<T> temp = _curr.getNext();
-			_curr = _curr.getNext();
-			return temp.getCargo();
+	    }
+	    public T next(){
+		DLLNode<T> temp = _curr.getNext();
+		_curr = _curr.getNext();
+		return temp.getCargo();
+	    }
+	    public void remove(){
+		if (hasNext() == false)
+		    throw new IndexOutOfBoundsException();
+		while (hasNext()) {
+		    next();
+		    
 		}
-		public void remove(){
-			/*
-			 *
-			 * 
-			 */
-		    //must take into acct:
-		    //next() call must precede each remove() call
-		    //eg next(), rm(), rm() -> must throw exceptions
-		    //Q: how make sure user calls next before rm?
-		}
+		//must take into acct:
+		//next() call must precede each remove() call
+		//eg next(), rm(), rm() -> must throw exceptions
+		//Q: how make sure user calls next before rm?
+	    }
 	 
 	    }
 	 public Iterator<T> iterator() {
 		 Iterator<T> t = new MyIterator();
 		 System.out.println(_head);
 		 while (t.hasNext()) {
-			 		System.out.println(t.next());
+		     System.out.println(t.next());
 			 		}
 	    	return t;
 	    }
