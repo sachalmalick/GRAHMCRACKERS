@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /*****************************************************
  * class LList
  * Implements a linked list
@@ -5,6 +7,30 @@
  *****************************************************/
 
 public class LList<T> implements List<T> { //your List.java must be in same dir
+	private class MyIterator implements Iterator<T>{
+		private DLLNode<T> _curr; // dummy node
+		public MyIterator(){ 
+			_curr = _head;
+		}
+		public boolean hasNext(){
+			if (_curr.getNext() != null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		public T next(){ 
+			return _curr.getNext().getCargo();
+		}
+		public void remove(){
+			
+		    //must take into acct:
+		    //next() call must precede each remove() call
+		    //eg next(), rm(), rm() -> must throw exceptions
+		    //Q: how make sure user calls next before rm?
+		}
+	    }
 
     //instance vars
     private DLLNode<T> _head, _tail; //pointers to first and last nodes
@@ -210,18 +236,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	return retStr;
     }
 
-    private class MyIterator implements Iterator<T>{
-	private DLLNode<T> _curr; // dummy node
-	public MyIterator(){ }
-	public boolean hasNext(){ }
-	public T next(){ }
-	public void remove(){
-	    //must take into acct:
-	    //next() call must precede each remove() call
-	    //eg next(), rm(), rm() -> must throw exceptions
-	    //Q: how make sure user calls next before rm?
-	}
-    }
+
     //main method for testing
     public static void main( String[] args ) {
 
