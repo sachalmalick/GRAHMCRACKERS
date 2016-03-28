@@ -19,16 +19,27 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 				return false;
 			}
 		}
-		public T next(){ 
+		public T next(){
 			return _curr.getNext().getCargo();
 		}
 		public void remove(){
-			
+			/*
+			 *
+			 * 
+			 */
 		    //must take into acct:
 		    //next() call must precede each remove() call
 		    //eg next(), rm(), rm() -> must throw exceptions
 		    //Q: how make sure user calls next before rm?
 		}
+	   
+
+	    }
+	 public Iterator<T> iterator() {
+		 Iterator<T> t = new MyIterator();
+		 while (t.hasNext()) {
+			 		System.out.println(t.next());}
+	    	return t;
 	    }
     //instance vars
     private DLLNode<T> _head, _tail; //pointers to first and last nodes
