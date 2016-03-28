@@ -212,7 +212,9 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 
     private class MyIterator implements Iterator<T>{
 	private DLLNode<T> _curr; // dummy node
-	public MyIterator(){ }
+	public MyIterator(){
+	    while (this.hasNext()) {
+		System.out.println(listIterator.next());}
 	public boolean hasNext(){ }
 	public T next(){ }
 	public void remove(){
